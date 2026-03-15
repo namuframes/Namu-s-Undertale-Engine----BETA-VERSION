@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"check_custenceCommands",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"check_custenceCommands",
+  "parent":{
+    "name":"Scripts",
+    "path":"folders/ENGINE/Scripts.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

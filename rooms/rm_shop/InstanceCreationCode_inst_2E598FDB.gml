@@ -1,0 +1,1 @@
+shop = obj_shop_doggo

@@ -1,0 +1,91 @@
+enum DIR{
+	UP=90,
+	DOWN=270,
+	LEFT=180,
+	RIGHT=0
+};
+
+enum ENCOUNTER_ID {
+	SPECIAL_WHIMSUN
+}
+
+enum ENEMY_EVENTS {
+	ACT_0,
+	ACT_1,
+	ACT_2,
+	ACT_3,
+	START,
+	MENU_SWITCH,
+	CUTSCENE,
+	ATTACK_START,
+	ATTACK,
+	ATTACK_END,
+	SPARED,
+	HURT,
+	BEFORE_HURT,
+	DEATH
+}
+
+enum SHOP_OPTIONS {
+	BUY,
+	SELL,
+	TALK,
+	EXIT
+}
+
+enum DEPTHS {
+	UI= -999	
+}
+
+
+enum STATE {
+	free,
+	frozen
+}
+
+enum BATTLE_TURNS { //THIS TURNS SEQUENCE IS QUITE IMPORTANT!!!!
+	PLAYER_INIT,
+	PLAYER,
+	PLAYER_END,
+	DIALOGUE,
+	ENEMY_INIT,
+	ENEMY,
+	ENEMY_END,
+	END
+}
+
+enum BATTLE_PAGES {
+	FIGHT,
+	ACT,
+	ITEM,
+	MERCY,
+	ACT_CHOOSE,
+	FIGHT_ACTION,
+	MAIN=-4,
+}
+
+enum TEXTconfig {
+	color = #FFFFFF,
+	color2 = #FFFF00
+}
+
+enum PLAYER {
+	overworld_speed = 3,
+	soul_speed = 2
+}
+
+enum BOX_TYPE {
+	overworld,
+	battle,
+	shop
+}
+
+enum INPUTS {
+	LEFT,
+	RIGHT,
+	UP,
+	DOWN,
+	CONFIRM,
+	CANCEL,
+	SPECIAL
+}

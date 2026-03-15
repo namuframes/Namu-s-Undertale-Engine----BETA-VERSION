@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"world_save_player",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"world_save_player",
+  "parent":{
+    "name":"Scripts",
+    "path":"folders/ENGINE/Scripts.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

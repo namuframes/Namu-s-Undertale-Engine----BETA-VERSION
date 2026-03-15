@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"array_reset",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"array_reset",
+  "parent":{
+    "name":"Scripts",
+    "path":"folders/ENGINE/Scripts.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

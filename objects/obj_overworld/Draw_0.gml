@@ -1,0 +1,1 @@
+test_draw_custom_text(10,10,"Ass",LETTER_SPACING,,,)

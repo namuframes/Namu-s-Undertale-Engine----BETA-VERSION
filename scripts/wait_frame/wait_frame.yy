@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"wait_frame",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"wait_frame",
+  "parent":{
+    "name":"Scripts",
+    "path":"folders/ENGINE/Scripts.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}
