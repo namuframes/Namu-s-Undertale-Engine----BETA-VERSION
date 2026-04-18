@@ -1,5 +1,5 @@
 /*
-draw_set_font(fnt_main)
+draw_set_font(lang_font(fnt_main))
 draw_text(10,10,"Instance: " +string(fadeOutInstances))
 draw_text(10,25, "Inst Vol: " + string(fadeOutInstVol))
 draw_text(10,40, "Inst fadeOutTime: " + string(fadeOutInstTime))

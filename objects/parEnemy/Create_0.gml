@@ -19,6 +19,39 @@ function set_action(_name,_script=undefined,index=array_length(action)) {
 	}	
 }
 
+function show_damage(boolean) {
+	if (boolean) {
+		do_tween(id,"txtDamage_tweenY","txtDamage_tweenY",0,EASE_OUT_BACK,1)
+
+		//Fade in Damage Text alpha
+		txtDamage.alpha += (txtDamage.alpha<1)*0.25
+		
+		//Drawing the damage text!
+		draw_set_alpha(txtDamage.alpha)	draw_set_halign(fa_middle)	draw_set_font(fnt_hachiro)
+		var c = txtDamage.color
+		var hp_height = hpbar.height*is_numeric(damage_taken)
+		draw_text_transformed_colour(hpbar.x+hpbar.width/2,((hpbar.y-hp_height-string_height("I")/2)/txtDamage.yscale)+txtDamage_tweenY,damage_taken,txtDamage.xscale,txtDamage.yscale,0,c,c,c,c,draw_get_alpha())
+		
+		draw_set_halign(fa_left)	draw_set_font(-1)	draw_set_alpha(1)	
+	} else {
+		//reseting everything for the next time this is called!
+		txtDamage_tweenY = 10
+		txtDamage.alpha = 0
+	}
+}
+
+function show_hp(boolean = (attacked)) { //Use this on DRAWs!
+	if (boolean) { //If condition is meet, execute the code!
+		//Fake hp is used on the HP bar to do the cool hp drain effect
+		do_tween(id,"hpTween","fakehp",hp,EASE_LINEAR,2)
+		//Drawing the HP bar
+		if (is_numeric(damage_taken)) draw_hp(hpbar.x, hpbar.y,hpbar.width,hpbar.height,fakehp,hpmax,c_lime,#4C4C4C); //Drawing the hp bar
+	}
+	if (instance_exists(obj_attack_grid)) {
+		show_damage(txtDamage.visible);
+	}
+}
+
 function limb_add(tag,_sprite,_x,_y,_xscale=image_xscale,_yscale=image_yscale,_image_angle=image_angle,_image_blend=image_blend,_image_alpha=image_alpha,follow=true) {
 	struct_set(limbs,tag,{
 		x: _x,
@@ -38,6 +71,7 @@ function limb_add(tag,_sprite,_x,_y,_xscale=image_xscale,_yscale=image_yscale,_i
 		follow: follow
 	})
 }
+
 function limbs_set(name,variable,value) {
 	if (struct_exists(limbs,name)) {
 		struct_set(struct_get(limbs,name),variable,value)	
@@ -82,41 +116,6 @@ can_die = true //Allows death
 damage_taken = 0;
 action = []
 
-show_damage = function(boolean) {
-	if (boolean) {
-		do_tween(id,"txtDamage_tweenY","txtDamage_tweenY",0,"out_back",1)
-		//txtDamage_tweenY=0
-		//Fade in Damage Text alpha
-		txtDamage.alpha += (txtDamage.alpha<1)*0.25
-		
-		//Drawing the damage text!
-		draw_set_alpha(txtDamage.alpha)	draw_set_halign(fa_middle)	draw_set_font(fnt_hachiro)
-		var c = txtDamage.color
-		var hp_height = hpbar.height*is_numeric(damage_taken)
-		draw_text_transformed_colour(hpbar.x+hpbar.width/2,(hpbar.y-hp_height-string_height("I")/2*txtDamage.yscale)+txtDamage_tweenY,damage_taken,txtDamage.xscale,txtDamage.yscale,0,c,c,c,c,draw_get_alpha())
-		
-		draw_set_halign(fa_left)	draw_set_font(-1)	draw_set_alpha(1)	
-	} else {
-		//reseting everything for the next time this is called!
-		txtDamage_tweenY = 20;
-		txtDamage.alpha = 0
-	}
-}
-
-show_hp = function(boolean = (attacked)) { //Use this on DRAWs!
-	if (boolean) { //If condition is meet, execute the code!
-		//Fake hp is used on the HP bar to do the cool hp drain effect
-		//With linearVar, i get the diffrente beetween the current hp and the previous hp
-		//and use it to determine how fast the bar will drain!
-		fakehp = linearVar(fakehp,hp,max(0.8,((hp_previous-hp))*0.1)) 
-		//Drawing the HP bar
-		if (is_numeric(damage_taken)) draw_hp(hpbar.x, hpbar.y,hpbar.width,hpbar.height,fakehp,hpmax,c_lime,#4C4C4C); //Drawing the hp bar
-	}
-	if (instance_exists(obj_attack_grid)) {
-		show_damage(txtDamage.visible);
-	}
-}
-
 speech_bubble = { //The position that the bubble is supposed to be!
 	x_left: bbox_left,
 	x_right: bbox_right,
@@ -134,8 +133,8 @@ hpbar = { //Hp bar info
 	yoffset: 0 //offset y
 }
 txtDamage = { //Damage text info
-	xscale: 2,
-	yscale: 2,
+	xscale: 2.5,
+	yscale: 2.5,
 	alpha: 0,
 	color: c_red,
 	visible: false

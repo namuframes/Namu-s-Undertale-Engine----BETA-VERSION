@@ -1,1 +1,0 @@
-if (draw_on_border) {visible = false}

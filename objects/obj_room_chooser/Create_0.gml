@@ -1,3 +1,4 @@
+if (!DEVELOPER_MODE) {instance_destroy()}
 index = 0;
 rooms = [room_first]
 while (array_last(rooms) != -1) {

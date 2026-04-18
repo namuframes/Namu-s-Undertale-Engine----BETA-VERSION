@@ -119,10 +119,10 @@ function c_canMove(_bool) {
 	})
 }
 
-function c_dialogue(_dia,_target=undefined, _creator=id) {
-	c_cmd([_dia,_target,_creator], 
-	function(_dia,_target,_creator) {
-		var bx = create_dialogue(_dia,!instance_exists(_target)  ? creator : _target, !instance_exists(_creator)  ? creator : _creator)
+function c_dialogue(_dia,_target=undefined, _creator=id, offx=undefined, offy=undefined) {
+	c_cmd([_dia,_target, _creator, offx, offy], 
+	function(_dia,_target,_creator,offx, offy) {
+		var bx = create_dialogue(_dia,!instance_exists(_target)  ? creator : _target, !instance_exists(_creator)  ? creator : _creator, offx, offy)
 		array_push(my_box,bx);
 		end_action()
 	})
@@ -131,7 +131,7 @@ function c_dialogue(_dia,_target=undefined, _creator=id) {
 function c_speech_bubble(_dialogue,_target=undefined,_side=-1) {
 	c_cmd([_dialogue,_target,_side], 
 	function(_dialogue,_target,_side) {
-		var bx = create_speech_bubble(_dialogue,instance_exists(_target) ? _target : creator)
+		var bx = create_speech_bubble(_dialogue,instance_exists(_target) ? _target : creator, _side)
 		array_push(my_box,bx);
 		end_action()
 	})

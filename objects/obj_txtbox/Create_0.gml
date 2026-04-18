@@ -1,39 +1,22 @@
-x = 16; y = get_if_top() ? 160 : 4
-type = BOX_TYPE.overworld;
-creator = undefined;
-target = undefined;
-if (room == rm_battle) {type = BOX_TYPE.battle}
-
-text = [];
-curtxt = 0;
-writer = new typewriter(id);
-
-character = {
-	name: "",
-	sound: snd_txt1,
-	font: fnt_main,
-	frame: 0,
-	offset: {x:0, y:0},
-	spacing: LETTER_SPACING
-}
-	
-portrait = noone
-copy_what_i_write = false
-
-
 next_page = function() {
-	curtxt++;
-	if (curtxt < array_length(text)) {
-		writer.index = 0;
+	if (curtxt < array_length(text)-1) {
+		writer.reset()
+		curtxt++;
 	} else {
-		instance_destroy();	
+		instance_destroy()
+	};
+}
+	
+text_draw = function(_x,_y,_length=infinity) {
+	var _font = font;
+	if (instance_exists(portrait)) {
+		if (asset_get_type(portrait.font) == asset_font) {
+			_font = portrait.font	
+		}
 	}
+	draw_each_letter(_x,_y,text[curtxt],,,,_font,1,1,0,_length,true,writer)
 }
-	
-portrait_offset = function(_x,_y) {
-	character.offset.x = _x; character.offset.y = _y;
-}
-	
+
 change_target = function(_id) {
 	if (instance_exists(target)) {
 		if (variable_instance_exists(target,"talk")) {
@@ -44,37 +27,40 @@ change_target = function(_id) {
 	target = _id;
 }
 
-set_writer_info = function(_character="") {
-	var output = ""
-	var s = string_pos("_",_character)
-	if (s > 0) {
-		for (var i = s+1; i < string_length(_character); i++) {
-			var char = string_char_at(_character,i)
-			if ((char >= "A" && char <= "Z") || (char >= "a" && char <= "z")) {output += char} else {break}
-		}
+set_portrait = function(input="",face=undefined) {
+	switch(string_lower(input)) {
+		case "gaster":
+			portrait=obj_portrait_gaster
+		break;
+	
+		case "": portrait=noone break;
 	}
 
-	switch(string_lower(output)) {
-		case "pap":
-			character.sound=snd_txtpap
-			character.font=fnt_pap
-			portrait_offset(15,10)
-			character.spacing = 0
-		break;
-		
-		case "sans":
-			character.font = fnt_comic_sans;
-			character.sound=snd_txtsans;
-			portrait_offset(15,20)
-			character.spacing = 0;
-		break;
-		
-		default: 
-			character.sound=snd_txt1
-			character.font=fnt_main
-			portrait_offset(0,0)
-			character.spacing = LETTER_SPACING
-		break;
+	if (instance_exists(portrait)) {
+		portrait.face = input
+	} else {
+		if (is_string(face)) {portrait.face = face};
 	}
 }
-set_writer_info();
+
+top = get_if_top()
+
+x = 16; y = top ? 160 : 4
+type = BOX_TYPE.overworld;
+creator = undefined;
+target = undefined;
+if (room == rm_battle) {type = BOX_TYPE.battle}
+
+text = [];
+curtxt = 0;
+	
+portrait = noone;
+
+font = lang_font(fnt_main_mono);
+voice = snd_txt1;
+
+writer = new typer();
+writer.skipable = true;
+writer.sound(voice,1)
+
+copy_what_i_write = false;

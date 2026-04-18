@@ -16,7 +16,7 @@ my_box = []
 do_action = function() {
 	var array = variable_instance_get(id,CUTSCENE_VARIABLE)
 	if (index > array_length(array)-1) {
-		if (array_length(my_box) <= 0) {
+		if (array_length(my_box) <= 0 && array_length(moves) <= 0) {
 			instance_destroy()
 		}
 	} else {
@@ -26,7 +26,7 @@ do_action = function() {
 	}
 }
 
-moving_action = [];
+moves = [];
 
 do_movement = function() {
 	if (array_length(moves) > 0) {
@@ -38,20 +38,9 @@ do_movement = function() {
 				with(stru.target) {
 					var hsp = sign(x-xprevious); 
 					var vsp = sign(y-yprevious);
-					
-					if (sprite_index = sprite[DIR.RIGHT] && hsp < 0) {sprite_index = sprite[DIR.LEFT]}  if (sprite_index = sprite[DIR.LEFT] && hsp > 0) {sprite_index = sprite[DIR.RIGHT]}
-					if (sprite_index = sprite[DIR.DOWN] && vsp < 0) {sprite_index = sprite[DIR.UP]}		if (sprite_index = sprite[DIR.UP] && vsp > 0) {sprite_index = sprite[DIR.DOWN]}
-					
-					if (vsp == 0) {
-						if (hsp < 0) {sprite_index = sprite[DIR.LEFT]};
-						if (hsp > 0) {sprite_index = sprite[DIR.RIGHT]};
-					}
 
-					if (hsp == 0) {
-						if (vsp < 0) {sprite_index = sprite[DIR.UP]};
-						if (vsp > 0) {sprite_index = sprite[DIR.DOWN]};
-					}
-					
+					face_to_direction(hsp,vsp);
+					sprite_index = sprite[face]
 					image_speed = 1
 				}
 			}	

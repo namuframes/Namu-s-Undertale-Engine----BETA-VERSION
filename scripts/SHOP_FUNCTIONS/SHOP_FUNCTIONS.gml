@@ -16,7 +16,7 @@ function SHOP() constructor {
 		{name: "Talk", script: function() {set_page(SHOP_OPTIONS.TALK)}},
 		{name: "Exit", script: function() {
 			if (room != rm_shop) {instance_destroy()} else {
-				switch_room(global.world.room)	
+				switch_room(global.saved_player.room)	
 			}
 		}}
 	]

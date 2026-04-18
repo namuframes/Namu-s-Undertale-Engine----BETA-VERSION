@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"SHOP_FUNCTIONS",
   "parent":{
-    "name":"Scripts",
-    "path":"folders/ENGINE/Scripts.yy",
+    "name":"SHOP",
+    "path":"folders/ENGINE/Scripts/SHOP.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

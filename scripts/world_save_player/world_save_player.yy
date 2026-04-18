@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"world_save_player",
   "parent":{
-    "name":"Scripts",
-    "path":"folders/ENGINE/Scripts.yy",
+    "name":"OVERWORLD",
+    "path":"folders/ENGINE/Scripts/OVERWORLD.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

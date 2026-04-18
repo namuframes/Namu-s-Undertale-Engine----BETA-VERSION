@@ -4,25 +4,30 @@ if (copy_what_i_write) {
 	keyboard_string=""
 	if (keyboard_check_pressed(vk_f12)) {text[curtxt] = ""	}
 	if (keyboard_check_pressed(vk_backspace)) {text[curtxt] = string_delete(text[curtxt],string_length(text[curtxt]),1)}
-	if (keyboard_check_pressed(vk_enter)) {text[curtxt] += "\n"}
+	if (InputPressed(INPUT_VERB.CONFIRM)) {text[curtxt] += "\n"}
 }
 
 if (curtxt < array_length(text)) {
-	var txt = text[curtxt]
 	if (is_struct(writer)) {
 		var is_writing = writer.is_writing;
 		
-		if (instance_exists(target)) {
-			if (object_get_parent(target.object_index) == parActor || target.object_index == parActor) {target.talk = is_writing}
-		}
+		var confirm = InputPressed(INPUT_VERB.CONFIRM) || InputCheck(INPUT_VERB.SPECIAL)
+		if (confirm && writer.done && writer.can_proceed) {next_page()}
 		
-		if (asset_get_type(portrait) == asset_sprite) {
-			var _spd = sprite_get_speed(portrait)/game_get_speed(gamespeed_fps)
-			if (is_writing) {character.frame+= _spd}
-			else {character.frame += _spd*(floor(character.frame) != 0)}
-			character.frame = clamp_ext(character.frame,0,sprite_get_number(portrait));
+		if (instance_exists(target)) {
+			if (object_get_parent(target.object_index) == parActor || target.object_index == parActor) {
+				target.talk = is_writing
+			}
 		}
 
-		if (input_pressed(vk_enter) && writer.done && writer.can_proceed) {next_page()}		
+		if (asset_get_type(portrait) == asset_object) {
+			if (!instance_exists(portrait)) {portrait = instance_create_depth(0,0,0,portrait)}	
+		}
+
+		if (instance_exists(portrait)) {
+			writer.sound(portrait.voice,portrait.voice_pitchMin,portrait.voice_pitchMax)
+			portrait.talking = is_writing;	
+			
+		} else {writer.sound(voice)};
 	}
 }

@@ -26,6 +26,6 @@ void main()
 		alpha += texture2D( gm_BaseTexture, v_vTexcoord + vec2(offset.x, -offset.y) ).a;
 	}
    
-    gl_FragColor = vec4(0.0,0.0,0.0, alpha);
+    gl_FragColor = vec4(1.0,0,0, alpha);
 }
 

@@ -10,8 +10,8 @@
   "managed":true,
   "name":"obj_ba_whimsun",
   "overriddenProperties":[
-    {"$GMOverriddenProperty":"v1","%Name":"","name":"","objectId":{"name":"parEnemy","path":"objects/parEnemy/parEnemy.yy",},"propertyId":{"name":"name","path":"objects/parEnemy/parEnemy.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"Whimsun",},
     {"$GMOverriddenProperty":"v1","%Name":"","name":"","objectId":{"name":"parEnemy","path":"objects/parEnemy/parEnemy.yy",},"propertyId":{"name":"hpmax","path":"objects/parEnemy/parEnemy.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"2",},
+    {"$GMOverriddenProperty":"v1","%Name":"","name":"","objectId":{"name":"parEnemy","path":"objects/parEnemy/parEnemy.yy",},"propertyId":{"name":"name","path":"objects/parEnemy/parEnemy.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"Whimsun",},
   ],
   "parent":{
     "name":"BATTLE",

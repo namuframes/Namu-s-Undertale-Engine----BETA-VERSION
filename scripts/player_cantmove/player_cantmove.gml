@@ -7,6 +7,8 @@ function player_cantmove(){
 	_cutscene || 
 	instance_exists(obj_room_transitioner) || 
 	instance_exists(obj_room_chooser) || 
-	instance_exists(obj_shopManager))
+	instance_exists(obj_shopManager)) ||
+	instance_exists(obj_pre_battle) ||
+	instance_exists(obj_save_handler)
 }
 

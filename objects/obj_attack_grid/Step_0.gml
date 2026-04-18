@@ -18,11 +18,12 @@ switch(state) {
 				}
 			}
 		}
+		
 		if (instance_exists(mark) && !mark.finished) {
 			if (mark.x > room_width) {instance_destroy(mark)} else {
 				var dist = abs(point_distance(mark.x,mark.y,x,y));
 				var presision = 1-clamp(dist/x,0,1)
-				if ((keyboard_check_pressed(vk_enter)) && place_meeting(x,y,mark)) {
+				if ((InputPressed(INPUT_VERB.CONFIRM)) && place_meeting(x,y,mark)) {
 					if (presision >= .99) {mark.image_blend = #B5E61D}
 					else if (presision >= .95) {mark.image_blend = c_yellow}
 					final_damage += ((global.stat.attack)*presision)+irandom(2)
@@ -49,14 +50,13 @@ switch(state) {
 			if (!instance_exists(my_instance) && !instance_exists(target.my_scene)) {
 				damage_enemy(final_damage); //This calls the enemy hurt event
 				if (is_numeric(target.damage_taken)) {audio_play_sound(snd_hit,0,0)};
-
 				state = 2
 			}
 		}
 	break;
 	
 	case 2:
-		if (obj_battle_control.TURN >= BATTLE_TURNS.DIALOGUE) {kill_self = true}
+		if (obj_battle_control.TURN >= BATTLE_TURNS.TURN_PREPARATION) {kill_self = true}
 		if (kill_self) {
 			instance_destroy(obj_target_mark)
 			image_alpha = linearVar(image_alpha,0,.1);

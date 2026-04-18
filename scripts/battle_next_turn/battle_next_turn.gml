@@ -1,18 +1,8 @@
 function battle_next_turn() {
 	with(obj_battle_control) {
 		if (delay<=0) {
-			/*
-			if (TURN = BATTLE_TURNS.PLAYER_INIT) {TURN = BATTLE_TURNS.PLAYER}
-			else if (TURN = BATTLE_TURNS.PLAYER) {TURN = BATTLE_TURNS.PLAYER_END}
-			else if (TURN = BATTLE_TURNS.PLAYER_END) {TURN = BATTLE_TURNS.DIALOGUE}
-			else if (TURN = BATTLE_TURNS.DIALOGUE) {TURN = BATTLE_TURNS.ENEMY_INIT}
-			else if (TURN = BATTLE_TURNS.ENEMY_INIT) {TURN = BATTLE_TURNS.ENEMY}
-			else if (TURN = BATTLE_TURNS.ENEMY) {TURN = BATTLE_TURNS.ENEMY_END}
-			else if (TURN = BATTLE_TURNS.ENEMY_END) {TURN = BATTLE_TURNS.PLAYER_INIT}
-			*/
-			set_turn(TURN+1)
-			TURN = clamp_ext(TURN,0,BATTLE_TURNS.ENEMY_END)
-			delay=1
+			battle_set_turn(TURN+1)
+			TURN = clamp_ext(TURN,0,BATTLE_TURNS.TURN)
 		}
 	}
 		

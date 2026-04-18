@@ -3,14 +3,14 @@ var position
 var box_stat = {x:16, y: 26}
 draw_sprite_stretched(spr_box,0,box_stat.x,box_stat.y+136*!get_if_top(),71,55)
 position = {x: box_stat.x+7, y: box_stat.y+4}
-draw_set_font(fnt_main)
+draw_set_font(lang_font(fnt_main))
 draw_text(position.x,position.y+136*!get_if_top(),string_upper(global.name))
 draw_set_font(-1)
 var info = ""
 info += $"lv {global.stat.level}\n"
 info += $"hp {global.stat.hp}/{global.stat.hp_max}\n"
 info += $"g  {global.stat.gold}\n"
-draw_set_font(fnt_crypt)
+draw_set_font(lang_font(fnt_crypt))
 draw_text_ext(position.x,position.y+21+136*!get_if_top(),info,9,-1)
 draw_set_font(-1)
 var box_options = {x: 16,	y: 84}
@@ -21,7 +21,7 @@ for(var i = 0; i < array_length(options); i++) {
 	var c = TEXTconfig.color;
 	if (!options[i].selectable) {c = c_gray};
 
-	draw_each_letter(position.x,position.y,options[i].name,,,c,fnt_main)
+	draw_each_letter(position.x,position.y,options[i].name,,,c,lang_font(fnt_main))
 
 	if (index == i) set_heart(position.x-14,position.y+4)
 }
@@ -31,13 +31,13 @@ if (im_focus) {draw_sprite_ext(spr_small_heart,0,ui_heart.x,ui_heart.y,1,1,0,c_w
 if (decided) {
 	switch(index) {
 		case menu.status:
-			draw_set_font(fnt_main)
+			draw_set_font(lang_font(fnt_main))
 			var my_pos = {x: box_stat.x+78, y: 26}
 			draw_sprite_stretched(spr_box,0,my_pos.x,my_pos.y,173,209)
 			draw_text(my_pos.x+14,my_pos.y+16,$"\"{string_upper(global.name)}\"")
 			var stats = [];
-			var weapon = is_struct(global.stat.weapon) ? [global.stat.weapon.name[0],global.stat.weapon.stats.damage] : ["(NONE)",0]
-			var armor = is_struct(global.stat.armor) ? [global.stat.armor.name[0],global.stat.armor.stats.defense] : ["(NONE)",0]
+			var weapon = is_struct(global.stat.weapon) ? [item_name(global.stat.weapon),global.stat.weapon.stats.damage] : ["(NONE)",0]
+			var armor = is_struct(global.stat.armor) ? [item_name(global.stat.armor),global.stat.armor.stats.defense] : ["(NONE)",0]
 
 			var msg = "";
 			array_push(stats, $"LV: {global.stat.level}")
@@ -52,6 +52,8 @@ if (decided) {
 			}
 			
 			draw_text_ext(my_pos.x+14,my_pos.y+46,msg,16,-1)
+			
+			
 		break;
 	}
 }

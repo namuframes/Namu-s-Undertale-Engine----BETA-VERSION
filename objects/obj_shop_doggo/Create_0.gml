@@ -34,4 +34,8 @@ add_talk("Move",function() {
 	c_dialogue("* <wave>*Sniff, Sniff*<wave><z>\nDon't even dare.")	
 })
 
-add_storage(new item_stick(),10)
+add_storage(new item_stick(),2)
+add_storage(new item_bandage(),4)
+add_storage(new item_toy_knife() , 5)
+
+if (!instance_exists(obj_mouse)) {instance_create_depth(0,0,0,obj_mouse)}

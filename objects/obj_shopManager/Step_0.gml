@@ -1,6 +1,10 @@
 if (live_call()) {return live_result}
 if (!instance_exists(shop)) {exit}
 
+if (InputPressed(INPUT_VERB.CANCEL) && buy_state == 0 && page.current != "cutscene" && page.current != SHOP_OPTIONS.EXIT) {
+	if (array_length(page.previous) <= 0 && room != rm_shop) {instance_destroy()}
+	previous_page()
+}
 
 switch(page.current) {
 		default:
@@ -8,8 +12,8 @@ switch(page.current) {
 		break;
 		
 		case -1:
-			set_controls((keyboard_check_pressed(vk_down)-keyboard_check_pressed(vk_up)),array_length(options)-1)
-			if (input_pressed(vk_enter)) {
+			set_controls((InputPressed(INPUT_VERB.DOWN)-InputPressed(INPUT_VERB.UP)),array_length(options)-1)
+			if (InputPressed(INPUT_VERB.CONFIRM)) {
 				script_execute(options[index.current].script)
 			}
 			right_text.index = 0;
@@ -25,25 +29,26 @@ switch(page.current) {
 		case SHOP_OPTIONS.BUY:
 			offy = linearVar(offy,0,16)
 			if (buy_state == 0) {
-				set_controls((keyboard_check_pressed(vk_down)-keyboard_check_pressed(vk_up)),array_length(storage)-1)
-				if (input_pressed(vk_enter)) {
+				set_controls((InputPressed(INPUT_VERB.DOWN)-InputPressed(INPUT_VERB.UP)),array_length(storage)-1)
+				if (InputPressed(INPUT_VERB.CONFIRM)) {
 					buy_state=1; 
 					array_push(index.previous,index.current)
 					index.current = 0;
 					audio_play_sound(snd_confirm,1,0)
 				}
 			} else {
-				set_controls((keyboard_check_pressed(vk_down)-keyboard_check_pressed(vk_up)),array_length(buy_options)-1)
-				if (input_pressed(vk_enter)) {
+				set_controls((InputPressed(INPUT_VERB.DOWN)-InputPressed(INPUT_VERB.UP)),array_length(buy_options)-1)
+				if (InputPressed(INPUT_VERB.CONFIRM)) {
 					if (index.current == 0) { //Yes
-						var cost = storage[index.current].cost
+						var itm = storage[array_last(index.previous)]
+						var cost = itm.cost
 						if (cost > global.stat.gold) {// Can buy?
 							//Can't buy! Fuck you!!!!
 							buy_speak = speech.no_cash
 						} else { //Can buy :)
 							buy_speak = speech.buyed
 							global.stat.gold -= cost
-							array_push(global.inventory,storage[index.current].item)
+							array_push(global.inventory,itm.item)
 						};
 					} else { //No
 						buy_speak = speech.denied;
@@ -52,7 +57,7 @@ switch(page.current) {
 					buy_state = 0;
 				}
 			
-				if (input_pressed(vk_shift)) {
+				if (InputPressed(INPUT_VERB.CANCEL)) {
 					buy_state=0
 					index.current = array_pop(index.previous)
 				}
@@ -60,8 +65,8 @@ switch(page.current) {
 		break;
 	
 		case SHOP_OPTIONS.TALK:
-			set_controls((keyboard_check_pressed(vk_down)-keyboard_check_pressed(vk_up)),array_length(talk)-1);
-			if (input_pressed(vk_enter)) {
+			set_controls((InputPressed(INPUT_VERB.DOWN)-InputPressed(INPUT_VERB.UP)),array_length(talk)-1);
+			if (InputPressed(INPUT_VERB.CONFIRM)) {
 				with(shop) {script_execute(talk[other.index.current].script)};
 			}
 		break;
@@ -71,7 +76,7 @@ switch(page.current) {
 
 			if (!instance_exists(parCutscene)) {
 				if (room != rm_shop) {instance_destroy()} else {
-					switch_room(global.world.room)	
+					switch_room(global.saved_player.room)	
 				}
 			}
 		break;
@@ -81,9 +86,4 @@ switch(page.current) {
 				previous_page()
 			}
 		break;
-}
-
-if (input_pressed(vk_shift) && buy_state == 0 && page.current != "cutscene" && page.current != SHOP_OPTIONS.EXIT) {
-	if (array_length(page.previous) <= 0 && room != rm_shop) {instance_destroy()}
-	previous_page()
 }

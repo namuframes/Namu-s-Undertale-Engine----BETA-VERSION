@@ -1,3 +1,4 @@
+if (target == undefined) {exit}
 if (surface_exists(surf)) {
     for (var i = 0; i < array_length(pixels); i++) {
         var p = pixels[i];

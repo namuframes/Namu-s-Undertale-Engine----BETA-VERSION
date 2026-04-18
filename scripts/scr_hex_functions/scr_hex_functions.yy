@@ -6,7 +6,7 @@
   "name":"scr_hex_functions",
   "parent":{
     "name":"Scripts",
-    "path":"folders/Scripts.yy",
+    "path":"folders/ENGINE/Scripts.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

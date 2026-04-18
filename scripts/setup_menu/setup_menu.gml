@@ -39,11 +39,10 @@ function setup_menu() {
 			index.current = 0;
 			if (do_sound) audio_play_sound(snd_confirm,0,0)
 		}
-		
-		//if (object_index == obj_battle_control) then with (obj_battle_control) {
-		//	if (TURN == BATTLE_TURNS.PLAYER) {enemy_event(ENEMY_EVENTS.MENU_SWITCH)}
-		//}
 	}
+
+
+
 	
 	function set_controls(inputs,limit) {
 		//Define the input that index will follow

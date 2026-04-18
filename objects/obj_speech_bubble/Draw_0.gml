@@ -1,9 +1,25 @@
 if (live_call()) {return live_result}
+var map = preload_get_map(text[curtxt])
+if(map) {
+	draw_set_font(font)
+	update_bubble()
+	draw_sprite_stretched_ext(spr_speech_bubble,0,bubble.x,bubble.y,width,height,image_blend,image_alpha)
+	draw_sprite_ext(spr_speech_pointer,0,pointer.x,pointer.y,image_xscale*(pointer.flipx ? -1 : 1),image_yscale,image_angle+pointer.angle,image_blend,image_alpha)
+}
+draw_each_letter(txt.x,txt.y,text[curtxt],,,c_black,font,.5,.5,0,length,false,writer)
+if (global.debug) {
+	draw_set_colour(c_blue)
+	var off = {x: sprite_get_xoffset(spr_speech_pointer), y: sprite_get_yoffset(spr_speech_pointer)}
+	draw_rectangle(bubble.x,bubble.y+height,bubble.x+width,bubble.y,true)
+	draw_set_colour(c_white)
+}
+
+/*
 
 draw_set_font(font)
 var extra_width = string_height("W")*0.5, extra_height = string_height("I")*0.4;
 var textoff_x = 7, textoff_y = 6;
-var mp = preload_each_letter(text[curtxt],,,fnt_dotum,.5,.5,length,id)
+var mp = preload_each_letter(text[curtxt],,,lang_font(fnt_dotum),.5,.5,length,id)
 
 var str_height= mp.height
 var str_width = mp.width

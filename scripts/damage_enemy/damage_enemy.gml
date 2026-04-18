@@ -3,7 +3,7 @@ function damage_enemy(damage,target=obj_battle_control.target_enemy.instance,use
 		if (damage > 0 && !target.invulnerable) {
 			target.hp -= damage;
 			target.damage_taken = damage;
-			target.color = c_red;
+			target.txtDamage.color = c_red;
 		} else {
 			target.damage_taken = "MISS";
 			target.txtDamage.color = c_gray;

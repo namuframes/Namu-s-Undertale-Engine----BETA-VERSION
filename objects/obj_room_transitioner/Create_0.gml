@@ -4,7 +4,7 @@ state = 0
 
 destiny = {
 	rm: room,
-	x: global.world.x,
-	y: global.world.y,
+	x: global.saved_player.x,
+	y: global.saved_player.y,
 	object: undefined
 }

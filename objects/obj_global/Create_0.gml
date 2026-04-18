@@ -1,5 +1,6 @@
-global.input_delay = 0
+global.input_delay = 0;
 global.name = "Chara";
+global.time = 0
 global.stat = {
 	weapon: "",
 	attack: 0,
@@ -8,22 +9,32 @@ global.stat = {
 	level: 1,
 	hp: 20,
 	hp_max: 20,
-	gold: 0,
+	gold: 100,
 	xp: 0
 };
 
-global.world = {
+global.saved_player = {
 	x: 0,
 	y: 0,
-	room: 0
+	room: 0,
+	face: DIR.DOWN
 }
 
 global.inventory = []
-item_add(new item_toy_knife())
-item_add(new item_bandage())
 
 global.fullscreen = false;
 global.delta =  NATIVE_FPS/max(1,FPS);
 
 global.ENCOUNTER_ID = ENCOUNTER_ID.SPECIAL_WHIMSUN;
 global.debug = false;
+global.border = false;
+global.party = [];
+
+global.region_kills = ds_map_create();
+global.region_population = ds_map_create();
+global.region = string_get_suffix(room_get_name(room))
+
+global.room_player_info = ds_map_create()
+
+item_add(new item_toy_knife())
+item_add(new item_bandage())

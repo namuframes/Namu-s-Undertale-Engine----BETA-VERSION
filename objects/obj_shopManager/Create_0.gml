@@ -12,10 +12,10 @@ page.current = -1
 
 buy_speak = "";
 
-main_text = new typewriter(id)
+main_text = new typer()
 main_text.skipable = false
 
-right_text = new typewriter(id)
+right_text = new typer()
 right_text.skipable = false
 
 buy_state = 0

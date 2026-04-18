@@ -4,7 +4,7 @@
   "name":"sh_outline",
   "parent":{
     "name":"Shaders",
-    "path":"folders/Shaders.yy",
+    "path":"folders/ENGINE/Shaders.yy",
   },
   "resourceType":"GMShader",
   "resourceVersion":"2.0",

@@ -1,13 +1,7 @@
-F1 - Debug mode
-F2 - Restart Game
-F4 - Fullscren
-F5 - Room Changer
-
 ---- Finish the Engine ----
-- A good method to add flavor text in the battle menu (in other words, turn text) 
 - Quesitons system
-- Encounter System!
-- player be capable to flee from a battle
+- player be capable to flee from a battles
 - Save system
-- XP level
 - EXP system
+- Room Persistent System
+- Party system [W.I.P]

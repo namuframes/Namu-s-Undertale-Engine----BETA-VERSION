@@ -1,17 +1,30 @@
+if (live_call()) {return live_result}
 event_inherited()
 image_xscale = .5;
 image_yscale = .5
-image_speed = 0
-inv_frame = 0;
+image_speed = 0;
+
+invincible = 0;
 
 hsp = 0; vsp = 0;
 spd = PLAYER.soul_speed;
 
 follow_border = true
 
-state = STATE.free
+state = STATE.frozen
+mode = SOUL_MODE.RED;
 
-function collision(object=obj_collision) {
+jump_force = 1;
+gravity_force = jump_force/3;
+
+jump_hold=0
+
+shoot_timer = 0;
+shoot_delay = 4;
+
+can_reset=true
+
+collision = function(object=obj_collision) {
 	if (place_meeting(x+hsp,y,object)) {
 		if(!place_meeting(x+hsp,y-spd,object)) {y-=spd}
 		else if(!place_meeting(x+hsp,y+spd,object)) {y+=spd} else {
@@ -24,7 +37,6 @@ function collision(object=obj_collision) {
 	if (place_meeting(x,y+vsp,object)) {
 		if(!place_meeting(x-spd,y+vsp,object)) {x-=spd}
 		else if(!place_meeting(x+spd,y+vsp,object)) {x+=spd} else {
-			
 			while (!place_meeting(x,y+sign(vsp),object)) {y += sign(vsp)}
 			vsp = 0
 		}

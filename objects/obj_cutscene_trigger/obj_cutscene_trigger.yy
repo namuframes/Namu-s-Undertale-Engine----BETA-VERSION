@@ -37,8 +37,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_cutscene_trigger",
-    "path":"sprites/spr_cutscene_trigger/spr_cutscene_trigger.yy",
+    "name":"ico_cutscene_trigger",
+    "path":"sprites/ico_cutscene_trigger/ico_cutscene_trigger.yy",
   },
   "spriteMaskId":null,
   "visible":true,

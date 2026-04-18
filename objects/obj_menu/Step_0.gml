@@ -1,16 +1,14 @@
 update_selectable();
-im_focus = !instance_exists(obj_inv_handler) && !decided && !instance_exists(obj_txtbox)
-
 if (im_focus) {
-	var input = (keyboard_check_pressed(vk_down) - keyboard_check_pressed(vk_up))
+	var input = (InputPressed(INPUT_VERB.DOWN) - InputPressed(INPUT_VERB.UP))
 	var prev_index = index
 	index += input
 	if (index != prev_index) {audio_play_sound(snd_select,0,0)}
 	index = clamp_ext(index,0,array_length(options)-1)
 
-	if (input_pressed(vk_shift)  || input_pressed(vk_control)) {instance_destroy()};
+	if (InputPressed(INPUT_VERB.CANCEL)  || InputPressed(INPUT_VERB.SPECIAL)) {instance_destroy()};
 
-	if (input_pressed(vk_enter)) {
+	if (InputPressed(INPUT_VERB.CONFIRM)) {
 		if (options[index].selectable) {
 			audio_play_sound(snd_confirm,0,0)
 			switch(options[index].type) {
@@ -28,5 +26,9 @@ if (im_focus) {
 		} else {audio_play_sound(snd_deny,0,0)}
 	};
 }
-
-if ((input_pressed(vk_shift) || input_pressed(vk_control)) && decided) {decided = false;}
+	
+if (decided) {
+	if ((InputPressed(INPUT_VERB.CANCEL) || InputPressed(INPUT_VERB.SPECIAL))) {decided = false;}
+}
+	
+im_focus = !instance_exists(obj_inv_handler) && !decided && !instance_exists(obj_txtbox)

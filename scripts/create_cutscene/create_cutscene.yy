@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"create_cutscene",
   "parent":{
-    "name":"Scripts",
-    "path":"folders/ENGINE/Scripts.yy",
+    "name":"CUTSCENE",
+    "path":"folders/ENGINE/Scripts/CUTSCENE.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

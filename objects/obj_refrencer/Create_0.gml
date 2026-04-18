@@ -1,3 +1,4 @@
+if (!DEVELOPER_MODE) {instance_destroy()}
 refalpha = 0
 
 depth = -999

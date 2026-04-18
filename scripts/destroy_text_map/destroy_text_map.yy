@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"destroy_text_map",
   "parent":{
-    "name":"Scripts",
-    "path":"folders/ENGINE/Scripts.yy",
+    "name":"TEXT",
+    "path":"folders/ENGINE/Scripts/TEXT.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

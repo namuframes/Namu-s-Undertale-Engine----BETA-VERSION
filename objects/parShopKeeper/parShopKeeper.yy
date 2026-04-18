@@ -11,8 +11,8 @@
   "name":"parShopKeeper",
   "overriddenProperties":[],
   "parent":{
-    "name":"group1",
-    "path":"folders/ENGINE/Objects/SHOP/group1.yy",
+    "name":"PARENT",
+    "path":"folders/Objects/SHOP/PARENT.yy",
   },
   "parentObjectId":null,
   "persistent":false,

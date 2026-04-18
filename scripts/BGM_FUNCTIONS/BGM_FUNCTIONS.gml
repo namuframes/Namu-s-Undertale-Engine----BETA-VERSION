@@ -1,4 +1,4 @@
-function bgm_set(_music, _fadeouttime = 20, _fadeintime = 20) {
+function bgm_set(_music, _fadeouttime = 5, _fadeintime = 5) {
 	with(obj_musicManager)	{
 		targetSongAsset = _music;
 		endFadeOutTime = _fadeouttime;

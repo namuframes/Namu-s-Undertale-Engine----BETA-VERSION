@@ -4,12 +4,12 @@ enum menu {
 	cell,
 }
 
-options = []
 function optionStruct(_name,_type=-1, _selectable=true) constructor {
 	type = 	_type;
 	name = _name;
 	selectable = _selectable;
 }
+options = []
 
 options[0] = new optionStruct("ITEM",menu.item)
 options[1] = new optionStruct("STAT",menu.status)

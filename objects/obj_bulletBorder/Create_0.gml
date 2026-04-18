@@ -1,12 +1,14 @@
 width =  image_xscale*sprite_get_width(sprite_index);
 height = image_yscale*sprite_get_width(sprite_index);
+angle = image_angle
 
 normal = {
 	x: x,
 	y: y,
 	width: width,
 	height: height,
-	spd: 20
+	spd: 20,
+	angle: angle
 }
 
 target = {
@@ -14,7 +16,8 @@ target = {
 	height: normal.height,
 	x: normal.x,
 	y: normal.y,
-	spd: normal.spd
+	spd: normal.spd,
+	angle: angle
 }
 
 thickness = 2;

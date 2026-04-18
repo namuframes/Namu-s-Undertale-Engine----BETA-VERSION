@@ -1,16 +1,16 @@
-y -= 20
+y -= 30
 event_inherited();
-
+terrified = false
 set_action("Terrorize", function() {
-	//c_dialogue("* You raise your arms and\nwiggle your fingers.\nWhimsun freaks out.")
-	c_dialogue("* I'm testing the text line break... since some times... it breaks in the wrong way!")
+	c_dialogue("* You raise your arms and wiggle your fingers.\n<w>Whimsun freaks out!");
+	terrified = true;
 })
+
 set_action("Console", function() {
 	c_dialogue("* Halfway through your first\nword, Whimsun bursts into\ntears and runs away.")
 	c_wait_dialogue()
 	c_var(id,["spared",true])
 })
-
 
 time = random_range(0,120)
 

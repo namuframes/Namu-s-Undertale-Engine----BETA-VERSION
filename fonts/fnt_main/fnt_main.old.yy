@@ -214,14 +214,14 @@
   "name":"fnt_main",
   "parent":{
     "name":"Fonts",
-    "path":"folders/Fonts.yy",
+    "path":"folders/ENGINE/Fonts.yy",
   },
   "pointRounding":0,
   "ranges":[
     {"lower":32,"upper":255,},
     {"lower":9647,"upper":9647,},
   ],
-  "regenerateBitmap":true,
+  "regenerateBitmap":false,
   "resourceType":"GMFont",
   "resourceVersion":"2.0",
   "sampleText":"abcdef ABCDEF\r\n0123456789 .,<>\"'&!?\r\nthe quick brown fox jumps over the lazy dog\r\nTHE QUICK BROWN FOX JUMPS OVER THE LAZY DOG\r\nDefault character: ▯ (9647)",

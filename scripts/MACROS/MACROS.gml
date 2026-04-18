@@ -1,15 +1,16 @@
+#macro DEVELOPER_MODE true
+
 #macro BASE_WIDTH 320
 #macro BASE_HEIGHT 240
-#macro RESOLUTION 4
-
-#macro BORDER_WIDTH 1920
-#macro BORDER_HEIGHT 1080
+#macro RESOLUTION 2
+#macro BORDER_WIDTH 1920/2
+#macro BORDER_HEIGHT 1080/2
 
 #macro WINDOW_WIDTH BASE_WIDTH*2
 #macro WINDOW_HEIGHT BASE_HEIGHT*2
 
 #macro INVENTORY_LIMIT 8
-#macro LETTER_SPACING 8
+
 #macro NATIVE_FPS 30
 #macro FPS 30
 
@@ -24,3 +25,14 @@
 #macro DEFAULT_INPUTDELAY 1
 
 #macro fnt_hachiro font_add_sprite_ext(spr_hachiro,"0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!?().,",true,0)
+
+#macro EASE_LINEAR "linear"
+#macro EASE_OUT "out"
+#macro EASE_OUT_BACK "out_back"
+#macro EASE_IN "in"
+#macro EASE_IN_BACK "in_back"
+#macro EASE_IN_OUT "in_out"
+#macro EASE_IN_OUT_BACK "in_out_back"
+#macro EASE_DAMAGE_TEXT "damage_text"
+
+#macro LINE_BREAK_CHAR "#"

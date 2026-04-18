@@ -1,8 +1,11 @@
-/// @description HURT
-c_shake(id,"x",hp_previous-hp,2);	
+/// @description SPARED
 c_custom(function() {
-	if (!instance_exists(obj_shaker) && !tween_exists("txtDamage_tweenY")) {
-		end_action()
+	with(creator) {
+		audio_stop_sound(snd_monster_death)
+		audio_play_sound(snd_monster_death,0,0,1,0,.8)
+		image_blend = c_gray
+		image_speed = 0;
+		spare_clouds(14)
 	}
-});
-c_wait(.5)
+	end_action()
+})

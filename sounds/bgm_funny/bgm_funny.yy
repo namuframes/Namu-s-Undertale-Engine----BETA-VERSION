@@ -10,7 +10,7 @@
   "compression":0,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":234.10358,
+  "duration":96.052246,
   "exportDir":"",
   "name":"bgm_funny",
   "parent":{

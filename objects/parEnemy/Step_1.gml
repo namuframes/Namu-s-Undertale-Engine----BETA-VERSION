@@ -4,7 +4,7 @@ if (on_battle()) { //If i'm on battle
 	if (round(fakehp) != hp && !attacked) {attacked = true;}
 	var attack_is_higher = hp+defense <= global.stat.attack
 	if (attack_is_higher && surrender) {spareable = true} //If player damage is higher than my life, PLEASE SPARE ME AAGGGGHHHHH
-	if (obj_battle_control.TURN >= BATTLE_TURNS.DIALOGUE) {//If battle turn is dialogue
+	if (obj_battle_control.TURN >= BATTLE_TURNS.TURN_PREPARATION) {//If battle turn is preparation
 		attacked = false
 		txtDamage.visible = false
 	}

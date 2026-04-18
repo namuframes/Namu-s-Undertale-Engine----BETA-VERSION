@@ -2,9 +2,9 @@
 var _l = 0
 switch(page) {
 	case "item":
-		input = keyboard_check_pressed(vk_down)-keyboard_check_pressed(vk_up)
+		input = InputPressed(INPUT_VERB.DOWN)-InputPressed(INPUT_VERB.UP)
 		
-		if (input_pressed(vk_enter)) {
+		if (InputPressed(INPUT_VERB.CONFIRM)) {
 			selected_item = global.inventory[index.current];
 			array_push(index.previous,index.current)
 			index.current = 0;
@@ -12,7 +12,7 @@ switch(page) {
 			audio_play_sound(snd_confirm,0,0)
 		}
 		
-		if (input_pressed(vk_shift)) {
+		if (InputPressed(INPUT_VERB.CANCEL)) {
 			instance_destroy();	
 		}
 		
@@ -20,53 +20,34 @@ switch(page) {
 	break;
 	
 	case "action":
-		input = keyboard_check_pressed(vk_right)-keyboard_check_pressed(vk_left)
+		input = InputPressed(INPUT_VERB.RIGHT)-InputPressed(INPUT_VERB.LEFT)
 		_l = array_length(actions)-1
-		if (input_pressed(vk_enter)) {
+		if (InputPressed(INPUT_VERB.CONFIRM)) {
 			var in = array_get_index(global.inventory,selected_item);
 			audio_play_sound(snd_confirm,0,0)
 			switch(index.current) {
 				case 0: //USE
-					if (selected_item.type == ITEM_TYPES.ARMOR || selected_item.type == ITEM_TYPES.WEAPON) {
-						var weapon = global.stat.weapon, armor = global.stat.armor
-						create_dialogue($"* You equipped the {selected_item.name[0]}.")
-						
-						array_delete(global.inventory,in,1)
-						
-						if (selected_item.type == ITEM_TYPES.WEAPON && is_struct(weapon)) {array_insert(global.inventory,in,weapon)}
-						else if (selected_item.type == ITEM_TYPES.ARMOR && is_struct(armor)) {array_insert(global.inventory,in,armor)}
-						
-						equip_item(selected_item)
-					} else if (selected_item.type == ITEM_TYPES.CONSUMEABLE) {
-						var ex = ""
-						heal_player(selected_item.stats.heal);
-						if (global.stat.hp >= global.stat.hp_max) { 
-							ex = "\n<z>Your HP was maxed out!";
-							create_dialogue($"* You ate the {selected_item.name[0]}.{ex}");
-						}
-						audio_play_sound(snd_heal_c,0,0);
-						array_delete(global.inventory,in, 1);
-					}
-					
+					item_use(selected_item)
 				break;
 				
 				case 1: //INFO
-					create_dialogue(selected_item.description[0])
+					create_dialogue(item_description(selected_item))
 				break;
 				
 				case 2: //DROP
-					create_dialogue($"* The {selected_item.name[0]} was thrown away.")
+					create_dialogue($"* The {item_name(selected_item)} was thrown away.")
 					array_delete(global.inventory,in, 1)
 				break;
 			}
+			//instance_destroy(obj_menu)
 			instance_destroy()
 		}
 
-		if (keyboard_check_pressed(vk_shift)) {page = "item"}
+		if (InputPressed(INPUT_VERB.CANCEL)) {page = "item"}
 	break;
 }
 
-if (keyboard_check_pressed(vk_shift)) {
+if (InputPressed(INPUT_VERB.CANCEL)) {
 	if (array_length(index.previous) > 0) index.current = array_pop(index.previous)
 }
 

@@ -1,0 +1,29 @@
+F1 - Debug mode
+F2 - Restart Game
+F4 - Fullscren
+F5 - Room Changer
+------------------------------
+Hi shinix, uuh this a note for u
+
+If you're consfused on where to start or where to find things,
+i'd reccomend u do things like:
+	Check the creation code of instances (Since there could have some cutscene codes)
+	For battles, check
+	- obj_soul
+	- obj_battle_control
+	- parEnemy, obj_ba_loox, obj_ba_whimsun
+	- parBullet, obj_bullet_loox, obj_bullet_butterfly
+	If you want to change the ecounter, just go to:
+	- obj_global -> create -> global.ENCOUNTER_ID
+	and change it following the enum ENCOUNTER_ID
+	
+	For shop, check
+	- obj_shopManager
+	- parShopKeeper, obj_shop_doggo
+	
+And there some cutscene examples in the rm_surface rooms.
+
+To set the room that the game will start, just change the room order, put the
+desired room beneath rm_init
+	
+And another thing, i'd reccomend u check out the TO-DO file

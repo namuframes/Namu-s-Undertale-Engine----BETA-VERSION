@@ -5,3 +5,5 @@ if (attacked || dead || spared) {
 	if (!instance_exists(parCutscene)) {sprite_index = spr_ba_whimsun}
 	time++
 }
+
+if (dead || terrified) {gold = 2};

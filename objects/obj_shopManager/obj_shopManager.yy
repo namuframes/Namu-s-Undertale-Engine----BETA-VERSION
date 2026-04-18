@@ -13,8 +13,8 @@
   "name":"obj_shopManager",
   "overriddenProperties":[],
   "parent":{
-    "name":"SHOP",
-    "path":"folders/ENGINE/Objects/SHOP.yy",
+    "name":"NON-PLACEABLE",
+    "path":"folders/ENGINE/Objects/NON-PLACEABLE.yy",
   },
   "parentObjectId":null,
   "persistent":false,

@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"player_cantmove",
   "parent":{
-    "name":"Scripts",
-    "path":"folders/ENGINE/Scripts.yy",
+    "name":"OVERWORLD",
+    "path":"folders/ENGINE/Scripts/OVERWORLD.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

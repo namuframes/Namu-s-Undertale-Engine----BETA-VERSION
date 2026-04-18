@@ -111,7 +111,7 @@
   "name":"fnt_crypt",
   "parent":{
     "name":"Fonts",
-    "path":"folders/Fonts.yy",
+    "path":"folders/ENGINE/Fonts.yy",
   },
   "pointRounding":0,
   "ranges":[

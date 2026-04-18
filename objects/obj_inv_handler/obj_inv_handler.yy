@@ -11,8 +11,8 @@
   "name":"obj_inv_handler",
   "overriddenProperties":[],
   "parent":{
-    "name":"OVERWORLD",
-    "path":"folders/ENGINE/Objects/OVERWORLD.yy",
+    "name":"NON-PLACEABLE",
+    "path":"folders/ENGINE/Objects/NON-PLACEABLE.yy",
   },
   "parentObjectId":null,
   "persistent":false,

@@ -12,11 +12,17 @@ if (place_meeting(x,y,collider) && is_solid(collider,0,0)) {
 	}
 }
 
-
-
 if (global.debug) {
 	if (mouse_check_button(mb_right)) {
 		x=mouse_x
 		y=mouse_y
 	}
 }
+if (array_length(global.party) > 0) {
+	if (x != xprevious || y != yprevious) {
+		for (var i = array_length(party_input); i > 0; i--)  {
+			party_input[i] = party_input[i-1];
+		}	
+		party_input[0] = {x: x,y: y,face: face}
+	}
+} else {party_input=[]}
